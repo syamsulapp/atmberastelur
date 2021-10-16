@@ -112,20 +112,31 @@ class ApiGetController extends Controller
 //            'id_kartu' => $id_kartu,
         );
         if ($telur_beras['jmltelur'] >= 0 && $telur_beras['jumlahBeras'] >= 0) {
-            if ($telur_beras['jmltelur'] <= 9 && $telur_beras['jumlahBeras'] <= 3) {
-                // insert data pengambilan beras dan telur
+          // untuk refresh(tap kembali kartu pada mesin)
+            if($telur_beras['jmltelur'] == 0 && $telur_beras['jumlahBeras'] == 0 ) {
                 $ubahData->beras = 0;
-//                $ubahData->id_kartu = $telur_beras['id_kartu'];
                 $ubahData->telur = $telur_beras['jmltelur'];
                 $ubahData->telur_beras = $telur_beras['jumlahBeras'];
                 $hasilData = $ubahData->save();
-                if ($hasilData) {
-                    return ["data" => "tap kembali kartu anda"];
-                } else {
-                    return ['data' => 'data gagal di insert'];
+                if($hasilData) {
+                    return ["data" => "tempelkan kembali kartu pada mesin"];
                 }
             } else {
-                return ["data" => "beras tidak lebih dari 3 liter dan telur hanya sampai 9 butir"];
+                if ($telur_beras['jmltelur'] <= 9 && $telur_beras['jumlahBeras'] <= 3) {
+                    // insert data pengambilan beras dan telur
+                    $ubahData->beras = 0;
+//                $ubahData->id_kartu = $telur_beras['id_kartu'];
+                    $ubahData->telur = $telur_beras['jmltelur'];
+                    $ubahData->telur_beras = $telur_beras['jumlahBeras'];
+                    $hasilData = $ubahData->save();
+                    if ($hasilData) {
+                        return ["data" => "berhasil ambil beras dan telur"];
+                    } else {
+                        return ['data' => 'data gagal di insert'];
+                    }
+                } else {
+                    return ["data" => "beras tidak lebih dari 3 liter dan telur hanya sampai 9 butir"];
+                }
             }
         } else {
             return ["data" => "data salah"];
