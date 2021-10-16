@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Http;
 
 class HttpClientUsers extends Controller
 {
-    
+
     public function getTelurDanBeras()
     {
-        $get_data_all = Http::get('http://localhost/dmi/BackendApiDMIAtmBeras/public/api/getApiTelur')->json();
+        $get_data_all = Http::get('http://localhost/BackendApiDMIAtmBeras/public/api/getApiTelur')->json();
         return view('umk', ['get_data_all' => $get_data_all]);
-    }   
+    }
+
 
     // public function get_data_beras(Request $getData)
     // {

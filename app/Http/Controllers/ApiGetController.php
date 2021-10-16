@@ -120,7 +120,7 @@ class ApiGetController extends Controller
                 $ubahData->telur_beras = $telur_beras['jumlahBeras'];
                 $hasilData = $ubahData->save();
                 if ($hasilData) {
-                    return ["data" => "berhasil ambil telur dan beras"];
+                    return ["data" => "tap kembali kartu anda"];
                 } else {
                     return ['data' => 'data gagal di insert'];
                 }
