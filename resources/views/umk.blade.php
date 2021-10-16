@@ -4,6 +4,7 @@
 
 @section('konten')
 
+<section>
     <div class="hero-section hero-style-1">
         <div class="container">
             <div class="row">
@@ -22,7 +23,7 @@
                                             @endif
                                             @if($g['telur_beras'] && $g['telur'] !=0)
                                                 @if($g['telur_beras'] <=3 && $g['telur'] <=9)
-                                                        {{ $g['telur_beras']}}{{ __(' liter beras ') }} {{ $g['telur']}}{{ __(' butir telur') }}
+                                                    <div class="flash-data" data-flashdata="{{ $g['telur_beras']}}{{ __(' liter beras ') }} {{ $g['telur']}}{{ __(' butir telur') }}"></div>
                                                 @endif
                                             @endif
                                     @else
