@@ -1,6 +1,6 @@
-<p align="center"><a href="https://lh3.googleusercontent.com/proxy/U9Q7pHDCpcSF8Qsr_I_aJsfneuhcstlEnABxFYEzKcEp-bPTUjONXBc6XCmQ0UwDWetGy93ECktSZe_-Fw2A_Gjush4wGzAnO8s8DbcjiNMv_or0m5XFH5lzmBZ_KMVx2USEKr2R-ht-qVJ457w3hVqjxA" target="_blank"><img src="https://lh3.googleusercontent.com/proxy/U9Q7pHDCpcSF8Qsr_I_aJsfneuhcstlEnABxFYEzKcEp-bPTUjONXBc6XCmQ0UwDWetGy93ECktSZe_-Fw2A_Gjush4wGzAnO8s8DbcjiNMv_or0m5XFH5lzmBZ_KMVx2USEKr2R-ht-qVJ457w3hVqjxA" width="400"></a></p>
+![Atm-Beras-Dan-Telur](https://user-images.githubusercontent.com/38209592/137625212-0ae7e494-e169-4ad0-84b7-f4b7566937dc.png)
 
-## About DMI BACKEND LARAVEL 
+## About DMI BACKEND LARAVEL
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
