@@ -48,7 +48,7 @@ class ApiGetController extends Controller
                 $ubahData->beras = 100;
                 $ubahData->telur = 100;
                 $ubahData->telur_beras = 100;
-                $ubahData->status_pengambilan = $jml_pengambilan;
+                $ubahData->status_pengambilan = $jml_pengambilan; // insert data status pengambilan 
                 $hasilData = $ubahData->save();
                 if ($hasilData) {
                     return ["data" => "sudah ngambil"];
@@ -118,7 +118,7 @@ class ApiGetController extends Controller
                 $ubahData->beras = 0;
                 $ubahData->telur = $telur_beras['jmltelur'];
                 $ubahData->telur_beras = $telur_beras['jumlahBeras'];
-                $ubahData->status_pengambilan = 0;
+                $ubahData->status_pengambilan = 0; // data pengambilan 0 jika status nya refresh
                 $hasilData = $ubahData->save();
                 if ($hasilData) {
                     return ["data" => "tempelkan kembali kartu pada mesin"];
