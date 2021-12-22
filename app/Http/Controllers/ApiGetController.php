@@ -36,7 +36,7 @@ class ApiGetController extends Controller
         $max_pengambilan = DB::table('tbl_data')->max('max_pengambilan');
         $ubahData = ApiGetTelur::find($id);
         if ($jml_pengambilan >= $pengambilan) {
-            if($jml_pengambilan < $max_pengambilan) {
+            if ($jml_pengambilan < $max_pengambilan) {
                 $ubahData->status_pengambilan = $jml_pengambilan;
                 $hasilData = $ubahData->save();
                 if ($hasilData) {
@@ -48,15 +48,16 @@ class ApiGetController extends Controller
                 $ubahData->beras = 100;
                 $ubahData->telur = 100;
                 $ubahData->telur_beras = 100;
+                $ubahData->status_pengambilan = $jml_pengambilan;
                 $hasilData = $ubahData->save();
-                if($hasilData) {
+                if ($hasilData) {
                     return ["data" => "sudah ngambil"];
                 } else {
                     return ["data" => "data gagal"];
                 }
             }
         } else {
-            return ["data" => "tidak bisa mengambil 2 kali"];
+            return ["data" => "data salah"];
         }
     }
 
@@ -109,23 +110,24 @@ class ApiGetController extends Controller
         $telur_beras = array(
             'jmltelur' => $telur,
             'jumlahBeras' => $telur_beras,
-//            'id_kartu' => $id_kartu,
+            //            'id_kartu' => $id_kartu,
         );
         if ($telur_beras['jmltelur'] >= 0 && $telur_beras['jumlahBeras'] >= 0) {
-          // untuk refresh(tap kembali kartu pada mesin)
-            if($telur_beras['jmltelur'] == 0 && $telur_beras['jumlahBeras'] == 0 ) {
+            // untuk refresh(tap kembali kartu pada mesin)
+            if ($telur_beras['jmltelur'] == 0 && $telur_beras['jumlahBeras'] == 0) {
                 $ubahData->beras = 0;
                 $ubahData->telur = $telur_beras['jmltelur'];
                 $ubahData->telur_beras = $telur_beras['jumlahBeras'];
+                $ubahData->status_pengambilan = 0;
                 $hasilData = $ubahData->save();
-                if($hasilData) {
+                if ($hasilData) {
                     return ["data" => "tempelkan kembali kartu pada mesin"];
                 }
             } else {
                 if ($telur_beras['jmltelur'] <= 9 && $telur_beras['jumlahBeras'] <= 3) {
                     // insert data pengambilan beras dan telur
                     $ubahData->beras = 0;
-//                $ubahData->id_kartu = $telur_beras['id_kartu'];
+                    //                $ubahData->id_kartu = $telur_beras['id_kartu'];
                     $ubahData->telur = $telur_beras['jmltelur'];
                     $ubahData->telur_beras = $telur_beras['jumlahBeras'];
                     $hasilData = $ubahData->save();
