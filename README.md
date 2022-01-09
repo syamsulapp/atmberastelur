@@ -2,4 +2,4 @@
 
 ## About FrontEnd Atm Beras Dan Telur
 
-Backend atm beras dan telur digunakan sebagai interface untuk menampilkan request data pada jumlah pengambilan beras dan telur 
+FrontEnd atm beras dan telur digunakan sebagai interface untuk menampilkan request data pada jumlah pengambilan beras dan telur 
