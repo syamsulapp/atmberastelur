@@ -3,7 +3,7 @@
 
     <header class="header">
         <section>
-            <img class="img" src="{{ asset('atmberas/assets/img/logo/dmi.png')}}" alt="Logo" />
+            <!-- <img class="img" src="{{ asset('atmberas/assets/img/logo/dmi.png')}}" alt="Logo" /> -->
         </section>
         <!-- navbar area -->
     </header>

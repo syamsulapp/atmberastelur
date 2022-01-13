@@ -29,35 +29,20 @@ class ApiGetController extends Controller
     // method dibawah paling penting
     public function status_pengambilan($id, $status_pengambilan)
     {
-        // logic pengambilan beras dan telur
-        $pengambilan = DB::table('tbl_data')->max('status_pengambilan');
-        $jml_pengambilan = (int) $pengambilan + $status_pengambilan;
         // cek data pengambilan => tidak boleh melebihi max pengambilan
         $max_pengambilan = DB::table('tbl_data')->max('max_pengambilan');
         $ubahData = ApiGetTelur::find($id);
-        if ($jml_pengambilan >= $pengambilan) {
-            if ($jml_pengambilan < $max_pengambilan) {
-                $ubahData->status_pengambilan = $jml_pengambilan;
-                $hasilData = $ubahData->save();
-                if ($hasilData) {
-                    return ["data" => 'jumlah pengambilan' . ' ' . ($jml_pengambilan) . ' ' . 'kali'];
-                } else {
-                    return ["data" => 'gagal'];
-                }
-            } else {
-                $ubahData->beras = 100;
-                $ubahData->telur = 100;
-                $ubahData->telur_beras = 100;
-                $ubahData->status_pengambilan = $jml_pengambilan; // insert data status pengambilan 
-                $hasilData = $ubahData->save();
-                if ($hasilData) {
-                    return ["data" => "sudah ngambil"];
-                } else {
-                    return ["data" => "data gagal"];
-                }
-            }
-        } else {
-            return ["data" => "data salah"];
+        if ($status_pengambilan == $max_pengambilan) {
+          $ubahData->beras = 100;
+          $ubahData->telur = 100;
+          $ubahData->telur_beras = 100;
+          $ubahData->status_pengambilan = $status_pengambilan;
+          $hasilData = $ubahData->save();
+          if ($hasilData) {
+              return ["data" => "sudah ngambil"];
+          } else {
+              return ["data" => "data gagal"];
+          }
         }
     }
 
@@ -130,6 +115,7 @@ class ApiGetController extends Controller
                     //                $ubahData->id_kartu = $telur_beras['id_kartu'];
                     $ubahData->telur = $telur_beras['jmltelur'];
                     $ubahData->telur_beras = $telur_beras['jumlahBeras'];
+                    $ubahData->status_pengambilan = 1;
                     $hasilData = $ubahData->save();
                     if ($hasilData) {
                         return ["data" => "berhasil ambil beras dan telur"];
