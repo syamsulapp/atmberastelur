@@ -33,16 +33,16 @@ class ApiGetController extends Controller
         $max_pengambilan = DB::table('tbl_data')->max('max_pengambilan');
         $ubahData = ApiGetTelur::find($id);
         if ($status_pengambilan == $max_pengambilan) {
-          $ubahData->beras = 100;
-          $ubahData->telur = 100;
-          $ubahData->telur_beras = 100;
-          $ubahData->status_pengambilan = $status_pengambilan;
-          $hasilData = $ubahData->save();
-          if ($hasilData) {
-              return ["data" => "sudah ngambil"];
-          } else {
-              return ["data" => "data gagal"];
-          }
+            $ubahData->beras = 100;
+            $ubahData->telur = 100;
+            $ubahData->telur_beras = 100;
+            $ubahData->status_pengambilan = $status_pengambilan;
+            $hasilData = $ubahData->save();
+            if ($hasilData) {
+                return ["data" => "sudah ngambil"];
+            } else {
+                return ["data" => "data gagal"];
+            }
         }
     }
 

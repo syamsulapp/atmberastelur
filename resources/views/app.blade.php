@@ -38,12 +38,6 @@
 <script src="{{ asset('atmberas/assets/js/count-up.min.js') }}"></script>
 <script src="{{ asset('atmberas/assets/js/wow.min.js') }}"></script>
 <script src="{{ asset('atmberas/assets/js/main.js') }}"></script>
-<script>
-    function autoRefreshPage() {
-        window.location = window.location.href;
-    }
-    setInterval('autoRefreshPage()', 2000)
-</script>
 </body>
 
 </html>

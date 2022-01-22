@@ -1,11 +1,24 @@
-const data = $('.flash-data').data('flashdata');
+const data_pengambilan = $('.request-pengambilan').data('flashdata');
 
-if(data) {
+const sudah_ambil = $('.sudah_ambil').data('flashdata');
+
+if(data_pengambilan) {
   Swal.fire({
-  position: 'center',
   icon: 'success',
-  title: 'jumlah pengambilan : ' + data,
-  confirmButtonText : '<i class="fa fa-thumbs-up"></i> Terimakaish!',
-  timer: 2000
+  title: 'Sukses...',
+  text: 'Pengambilan :' + data_pengambilan,
+  footer: '<a href="">Jika Kartu Anda Belum Aktif Segera Laporkan!</a>',
+  timer: 5000,
 })
 }
+
+if(sudah_ambil) {
+  Swal.fire({
+  icon: 'error',
+  title: 'error...',
+  text: sudah_ambil,
+  footer: '<a href="">Jika Kartu Anda Belum Aktif Segera Laporkan!</a>',
+  timer: 5000,
+})
+}
+
