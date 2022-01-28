@@ -149,4 +149,29 @@ class ApiGetController extends Controller
             return ["data" => "beras hanya sampai 3 liter"];
         }
     }
+
+    // tambahan 
+
+    public function jadwal()
+    {
+        // jadwal pengambilan beras dan telur
+    }
+
+    public function limit_pengambilan_berdasarkan_jadwal()
+    {
+        // limit pengambilan berdasarkan jadwal
+    }
+
+    public function animasi_layout_atmberas()
+    {
+    }
+
+    public function img_tambah()
+    {
+    }
+
+    public function kirim_status()
+    {
+        // kirim status ke layar , yang fungsi statusnya untuk cek apakah ada beras dan telur di dalam mesin atm
+    }
 }
