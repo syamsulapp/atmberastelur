@@ -109,21 +109,43 @@ class ApiGetController extends Controller
                     return ["data" => "tempelkan kembali kartu pada mesin"];
                 }
             } else {
-                if ($telur_beras['jmltelur'] <= 9 && $telur_beras['jumlahBeras'] <= 3) {
-                    // insert data pengambilan beras dan telur
-                    $ubahData->beras = 0;
-                    //                $ubahData->id_kartu = $telur_beras['id_kartu'];
+                if ($telur_beras['jmltelur'] && $telur_beras['jumlahBeras'] != 0) {
+                    if ($telur_beras['jmltelur'] <= 9 && $telur_beras['jumlahBeras'] <= 3) {
+                        // insert data pengambilan beras dan telur
+                        $ubahData->beras = 0;
+                        //                $ubahData->id_kartu = $telur_beras['id_kartu'];
+                        $ubahData->telur = $telur_beras['jmltelur'];
+                        $ubahData->telur_beras = $telur_beras['jumlahBeras'];
+                        $ubahData->status_pengambilan = 1;
+                        $hasilData = $ubahData->save();
+                        if ($hasilData) {
+                            return ["data" => "berhasil ambil beras dan telur"];
+                        } else {
+                            return ['data' => 'data gagal di insert'];
+                        }
+                    } else {
+                        return ["data" => "beras tidak lebih dari 3 liter dan telur hanya sampai 9 butir"];
+                    }
+                } else if ($telur_beras['jmltelur'] > 0 && $telur_beras['jumlahBeras'] == 0) {
                     $ubahData->telur = $telur_beras['jmltelur'];
+                    $ubahData->telur_beras = null;
+                    $ubahData->status_pengambilan = 1;
+                    $hasilData = $ubahData->save();
+                    if ($hasilData) {
+                        return ["data" => "berhasil ambil telur "];
+                    } else {
+                        return ["data" => "gagal ambil beras"];
+                    }
+                } else if ($telur_beras['jmltelur'] == 0 && $telur_beras['jumlahBeras'] > 0) {
+                    $ubahData->telur = null;
                     $ubahData->telur_beras = $telur_beras['jumlahBeras'];
                     $ubahData->status_pengambilan = 1;
                     $hasilData = $ubahData->save();
                     if ($hasilData) {
-                        return ["data" => "berhasil ambil beras dan telur"];
+                        return ["data" => "berhasil ambil beras "];
                     } else {
-                        return ['data' => 'data gagal di insert'];
+                        return ["data" => "gagal ambil beras"];
                     }
-                } else {
-                    return ["data" => "beras tidak lebih dari 3 liter dan telur hanya sampai 9 butir"];
                 }
             }
         } else {
@@ -150,7 +172,9 @@ class ApiGetController extends Controller
         }
     }
 
-    // tambahan 
+    /**
+     * yang mau di kerja nanti (otw)
+     */
 
     public function jadwal()
     {
