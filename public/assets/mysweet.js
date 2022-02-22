@@ -15,7 +15,7 @@ if(data_pengambilan) {
 if(sudah_ambil) {
   Swal.fire({
   icon: 'error',
-  title: 'error...',
+  title: 'Gagal...',
   text: sudah_ambil,
   footer: '<a href="">Jika Kartu Anda Belum Aktif Segera Laporkan!</a>',
   timer: 5000,

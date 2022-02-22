@@ -17,7 +17,7 @@
                                     @foreach($get_data_all as $g)
                                     @if($g['status_waktu_pengambilan'] != 'N' )
                                     @if($g['beras'] !=0)
-                                    @if($g['beras'] <=3 ) {{ $g['beras'] }}{{ (' liter beras ') }} @endif @endif @if($g['telur_beras'] && $g['telur'] !=0) @if($g['telur_beras'] <=3 && $g['telur'] <=9) {{ $g['telur_beras']}}{{ __(' Liter Beras ') }} {{ __('Dan') }} {{ $g['telur']}}{{ __(' Butir Telur') }} <div class="request-pengambilan" data-flashdata="">
+                                    @if($g['beras'] <=3 ) {{ $g['beras'] }}{{ (' liter beras ') }} @endif @endif @if($g['telur_beras'] && $g['telur'] !=0) @if($g['telur_beras'] <=3 && $g['telur'] <=9) <div class="request-pengambilan" data-flashdata="{{ $g['telur_beras']}}{{ __(' Liter Beras ') }} {{ __('Dan') }} {{ $g['telur']}}{{ __(' Butir Telur') }}">
                     </div>
                     @endif
                     @endif
@@ -50,7 +50,7 @@
                     </script>
                     @endif
                     @if($g['telur'] > 0 && $g['telur_beras'] == 0)
-                    {{$g['telur']}}{{ ('butir telur') }}
+                    <div class="request-pengambilan" data-flashdata="{{$g['telur']}}{{ ('butir telur') }}"></div>
                     <script>
                         function autoRefreshPage() {
                             window.location = window.location.href;
@@ -58,7 +58,7 @@
                         setInterval('autoRefreshPage()', 5000)
                     </script>
                     @elseif($g['telur_beras'] > 0 && $g['telur'] == 0)
-                    {{$g['telur_beras']}}{{ ('liter beras') }}
+                    <div class="request-pengambilan" data-flashdata="{{$g['telur_beras']}}{{ ('liter beras') }}"></div>
                     <script>
                         function autoRefreshPage() {
                             window.location = window.location.href;
